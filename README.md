@@ -17,7 +17,7 @@ The goals / steps of this project are the following:
 [image2]: ./images/undistorted.png "Undistorted"
 [image3]: ./images/transform.png "Road Transformed"
 [image4]: ./images/gradient.png "Binary Example"
-[image5]: ./images/warped.png "Warp Example"
+<!-- [image5]: ./images/warped.png "Warp Example" -->
 [image6]: ./images/histogram_points.png "Window Points"
 [image7]: ./images/color_fit_lines.png "Fit Visual"
 [image8]: ./images/output.png "Output"
@@ -86,7 +86,7 @@ This resulted in the following source and destination points:
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![alt text][image5]
+![alt text][image3]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
