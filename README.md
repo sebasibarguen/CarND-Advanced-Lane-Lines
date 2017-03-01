@@ -13,14 +13,14 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./images/original.png "Original"
+[image1]: ./images/original.jpg "Original"
 [image2]: ./images/undistorted.png "Undistorted"
 [image3]: ./images/transform.png "Road Transformed"
 [image4]: ./images/gradient.png "Binary Example"
 [image5]: ./images/warped.png "Warp Example"
 [image6]: ./images/histogram_points.png "Window Points"
 [image7]: ./images/color_fit_lines.png "Fit Visual"
-[image8]: ./images/example_output.png "Output"
+[image8]: ./images/output.png "Output"
 [hitogram]: ./images/histogram.png "Histogram"
 [video1]: ./output_project_video.mp4 "Video"
 
@@ -55,7 +55,7 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 I used a combination of color and gradient thresholds to generate a binary image (thresholding steps are inside the function `pipeline` inside `find_lanes.py`).  Here's an example of my output for this step.
 
-![alt text][image3]
+![alt text][image4]
 
 To get to this image, I converted the image from RGB to HLS format. I focused on the S channel and applied a sobel gradient. Then I combined a threshold image of the gradient with a threshold colored image.
 
