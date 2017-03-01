@@ -192,7 +192,8 @@ def paint_image(img, undistorted, Minv, ploty, left_fitx, right_fitx):
 
 #######################################################
 
-
+left_moving_avg = []
+right_moving_avg = []
 def process_image(img):
 
     objpoints, imgpoints = calibrate_camera()
@@ -208,16 +209,31 @@ def process_image(img):
 
     ploty, left_fitx, right_fitx, left_curverad, right_curverad = poly_fit(window_centroids)
 
+    if len(left_moving_avg) >= 3:
+        left_moving_avg.pop(0)
+        right_moving_avg.pop(0)
+
+    left_moving_avg.append(left_fitx)
+    right_moving_avg.append(right_fitx)
+
+    left_fitx = np.mean(np.asarray(left_moving_avg), axis=0)
+    right_fitx = np.mean(np.asarray(right_moving_avg), axis=0)
+
     output = paint_image(warped, undistorted, Minv, ploty, left_fitx, right_fitx)
 
     return output
 
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("input_video", help="video to process", type=str)
+args = parser.parse_args()
 
 
-print('Processing video ...')
-video_file = 'project_video.mp4'
+video_file = args.input_video
 output_file = 'output_' + video_file
 
+
+print('Processing video ...', video_file)
 from moviepy.editor import VideoFileClip
 
 clip2 = VideoFileClip(video_file)
