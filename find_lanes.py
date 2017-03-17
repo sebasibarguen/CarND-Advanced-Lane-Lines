@@ -4,8 +4,6 @@ import glob
 import matplotlib.pyplot as plt
 
 
-
-
 def calibrate_camera(calib_img_dir='./camera_cal/calibration*.jpg'):
 
     # prepare object points, like (0,0,0), (1,0,0), (2,0,0) ....,(6,5,0)
@@ -139,7 +137,6 @@ def poly_fit(window_centroids):
     l_points = []
     r_points = []
 
-    y_values = [40, 120, 200, 280, 360, 440, 520, 600, 680] #
     for l, r in window_centroids:
         l_points.append(l)
         r_points.append(r)
@@ -209,12 +206,12 @@ def process_image(img):
 
     ploty, left_fitx, right_fitx, left_curverad, right_curverad = poly_fit(window_centroids)
 
+    left_moving_avg.append(left_fitx)
+    right_moving_avg.append(right_fitx)
+
     if len(left_moving_avg) >= 3:
         left_moving_avg.pop(0)
         right_moving_avg.pop(0)
-
-    left_moving_avg.append(left_fitx)
-    right_moving_avg.append(right_fitx)
 
     left_fitx = np.mean(np.asarray(left_moving_avg), axis=0)
     right_fitx = np.mean(np.asarray(right_moving_avg), axis=0)
