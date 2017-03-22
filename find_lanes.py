@@ -40,6 +40,12 @@ def calibrate_camera(calib_img_dir='./camera_cal/calibration*.jpg'):
 
     return objpoints, imgpoints
 
+def cal_undistort(img, objpoints, imgpoints):
+    # Use cv2.calibrateCamera() and cv2.undistort()
+    ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, img.shape[:2], None, None)
+    undist = cv2.undistort(img, mtx, dist, None, mtx)
+    return undist
+
 def region_of_interest(img):
 
     shape = img.shape
