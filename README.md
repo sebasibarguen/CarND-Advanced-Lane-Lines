@@ -30,7 +30,7 @@ The projects purpose is to find lane lines from images coming from a front facin
 
 ![alt text][image1]
 
-With just the pixels from the camera, the algorithm is able to detect both **right** and **left** lanes. The pipeline follows a traditional computer vision approach. 
+With just the pixels from the camera, the algorithm is able to detect both **right** and **left** lanes. The pipeline follows a traditional computer vision approach.
 
 ### Camera Calibration
 
@@ -51,7 +51,7 @@ After calibrating the images, we can now correclty distort the camera images so 
 > Reference: `Find Lane Lines.ipynb`, code block `20`, `undistort` function.
 
 #### Binary Images
-Next, I used a combination of color and gradient thresholds to generate a binary image. Here's an example of a test image when converted to binary: 
+Next, I used a combination of color and gradient thresholds to generate a binary image. Here's an example of a test image when converted to binary:
 
 ![alt text][image4]
 
@@ -61,9 +61,9 @@ To get to this image, I converted the image from RGB to HLS format. I focused on
 
 #### Transformed
 
-To find the lanes, I transformed the image to reduce the search space inside the image and make it easier to later use an algorithmic approach of finding lanes. 
+To find the lanes, I transformed the image to reduce the search space inside the image and make it easier to later use an algorithmic approach of finding lanes.
 
-The code for my perspective transform includes a function called `warp`.  This function takes as inputs an image (`img`), and transforms the image. The transformation 
+The code for my perspective transform includes a function called `warp`.  This function takes as inputs an image (`img`), and transforms the image. The transformation
 
 
 This resulted in the following source and destination points:
@@ -116,7 +116,7 @@ The end result of the whole process can be seen in the following image:
 
 ![alt text][image8]
 
-The lane lines have been marked with yellow, and the lane was filled with green. 
+The lane lines have been marked with yellow, and the lane was filled with green.
 
 ---
 
@@ -132,10 +132,6 @@ Here's a [link to my video result](./output_project_video.mp4)
 
 #### Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-My initial take on the project was using the same process for a single image, and apply it to the video. This had many difficulties, given that many images the lane lines were not being recognized with a high degree of confidense. This is were having sanity checks, and validating that the results from the lane finding pipeline make sense has big benefits. I also saw huge improvements in performance by averaging frames and including a buffer.
+My initial take on the project was using the same process for a single image, and apply it to the video. This had many difficulties, given that many images the lane lines were not being recognized with a high degree of confidence. This is were having sanity checks, and validating that the results from the lane finding pipeline make sense has big benefits. I also saw huge improvements in performance by averaging frames and including a buffer.
 
 After implementing the `Line` and `FindLane` classes, it made the video result more smooth.
-
-
-
-
